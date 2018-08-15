@@ -27,6 +27,14 @@ class my_tests(unittest.TestCase):
         namespace = self.parser.parse_args(args)
         self.assertEqual(namespace.text, "hello world")
 
+    def test_no_args(self):
+        process = subprocess.Popen(
+            ["python", "./echo.py"],
+            stdout=subprocess.PIPE)
+        stdout, _ = process.communicate()
+        usage_reminder = "usage: echo.py [-h] [-u] [-l] [-t] text\n"
+        self.assertEqual(stdout, usage_reminder)
+
 
     """ testing if shorthand optional flags do the right thing"""
 

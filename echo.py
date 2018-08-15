@@ -16,7 +16,7 @@ def main(args):
     parser = create_parser()
     if not args:
         parser.print_usage()
-        sys.exit(1)
+        sys.exit(3)
 
     namespace = parser.parse_args(args)
     text = namespace.text
