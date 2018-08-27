@@ -82,6 +82,15 @@ class my_tests(unittest.TestCase):
         self.assertEqual(echo.main(args), "Hello World")
 
 
+    """testing for all args"""
+    def test_all(self):
+        args = ["-u", "-l", "-t", 'hello world']
+        namespace = self.parser.parse_args(args)
+        self.assertEqual(namespace.title, True)
+        self.assertEqual(namespace.upper, True)
+        self.assertEqual(namespace.lower, True)
+        self.assertEqual(echo.main(args), "Hello World")
+
 
 if __name__ == "__main__":
     unittest.main()
